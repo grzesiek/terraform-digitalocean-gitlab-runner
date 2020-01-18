@@ -16,11 +16,6 @@ resource "digitalocean_droplet" "gitlab_runner_01" {
   user_data          = data.ignition_config.coreos_runner_ign.rendered
 }
 
-data "ignition_filesystem" "root" {
-  name = "root"
-  path = "/"
-}
-
 data "ignition_systemd_unit" "gitlab_runner_service" {
   name    = "gitlab-runner.service"
   enabled = true
